@@ -1,0 +1,15 @@
+* <2018-11-30 Fri>
+
+** compile the `libmusicxml` as a shared library via the follwing methods 
+#+BEGIN_SRC 
+
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -H. -Bcmake_build
+#+END_SRC
+
+*** CMake
+
+*** make build 
+
+#+BEGIN_SRC 
+ sudo xcode-select --reset
+#+END_SRC
