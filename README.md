@@ -1,14 +1,14 @@
 # musicxml
 
-A Clojure library designed to ... well, that part is up to you.
+This is a part of exemplar project ( XML comprehension)
 
 ## Usage
 
-FIXME
+
 
 ## License
 
-Copyright © 2018 FIXME
+Copyright © 2018 abhi18av
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
