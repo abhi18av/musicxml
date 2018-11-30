@@ -1,14 +1,47 @@
-(ns musicxml.scratch)
+(ns musicxml.scratch
+  (:require [alda.lisp :refer :all]
+            [alda.now  :refer :all]))
 
 
-(require '[alda.lisp :refer :all])
+(def my-score (new-score))
 
-(require '[alda.now  :as    now])
+(with-score my-score
+   (play!
+    (part "piano"
+          (note (pitch :c))
+          (note (pitch :d))
+          (note (pitch :e :flat))
+          (note (pitch :f))
+          (note (pitch :g))
+          (note (pitch :a :flat))
+          (note (pitch :b))
+          (octave :up)
+          (note (pitch :c)))))
 
 
-(now/play!
+(Thread/sleep 2000)
+
+(with-score my-score
+  (play!
+   (note (pitch :c))))
+
+(with-new-score
+  (println "Playing C4")
+  (play!
+   (part "piano"
+         (note (pitch :c))
+         (octave :up)))
+
+  (Thread/sleep 2000)
+
+  (println "Playing C5")
+  (play!
+   (note (pitch :c))))
+
+(new-score
+(play!
  (part "piano"
-       (note (pitch :c) (duration (note-length 8)))
+       (note (pitch :c))
        (note (pitch :d))
        (note (pitch :e :flat))
        (note (pitch :f))
@@ -16,19 +49,22 @@
        (note (pitch :a :flat))
        (note (pitch :b))
        (octave :up)
-       (note (pitch :c))))
+       (note (pitch :c)))))
 
 
-;; soundfont
-(require '[midi.soundfont :refer (load-all-instruments! midi-test load-patch)]
-         '[midi.soundfont.fluid-r3 :as fluid-r3])
+(with-new-score
+  (play!
+   (part "piano"
+         (note (pitch :c))
 
-(import '(javax.sound.midi MidiSystem))
+         (do (volume 50) (octave 6))
 
-(def synth (MidiSystem/getSynthesizer))
-(load-all-instruments! synth fluid-r3/sf2)
+         (chord (note (pitch :c))
+                (note (pitch :e))
+                (note (pitch :g)))
 
-(midi-test synth) ; you should hear a nice-sounding piano
+         (for [letter [:c :d :e :f :g]]
+           (note (pitch letter)
+                 (duration (note-length 8))))
 
-(load-patch synth 30)
-(midi-test synth) ; you should hear a gnarly distorted guitar!
+         )))

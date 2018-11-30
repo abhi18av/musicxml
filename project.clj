@@ -15,4 +15,7 @@
                  [midi.soundfont "0.1.0"]
                  [org.bitbucket.daveyarwood/fluid-r3 "0.1.1"]
 
+                 ;; Edna
+                 ;; NOTE calling edna raises errors
+                 ;[edna "1.6.0"]
                  ])
