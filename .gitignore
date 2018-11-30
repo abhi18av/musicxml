@@ -11,3 +11,4 @@ pom.xml.asc
 .hg/
 
 _resources
+/_scratch/libmusicxml-dev/.gitignore
