@@ -3,6 +3,26 @@
             [alda.now  :refer :all]))
 
 
+
+(with-new-score
+  (play!
+   (part "piano"
+         (note (pitch :c))
+
+         (do (volume 50) (octave 6))
+
+         (chord (note (pitch :c))
+                (note (pitch :e))
+                (note (pitch :g)))
+
+         (for [letter [:c :d :e :f :g]]
+           (note (pitch letter)
+                 (duration (note-length 8)))))))
+
+
+
+(Thread/sleep 2000)
+
 (def my-score (new-score))
 
 (with-score my-score
@@ -50,21 +70,3 @@
        (note (pitch :b))
        (octave :up)
        (note (pitch :c)))))
-
-
-(with-new-score
-  (play!
-   (part "piano"
-         (note (pitch :c))
-
-         (do (volume 50) (octave 6))
-
-         (chord (note (pitch :c))
-                (note (pitch :e))
-                (note (pitch :g)))
-
-         (for [letter [:c :d :e :f :g]]
-           (note (pitch letter)
-                 (duration (note-length 8))))
-
-         )))
